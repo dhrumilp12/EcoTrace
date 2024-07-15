@@ -16,7 +16,7 @@ router.post('/login', async (req, res) => {
         id: user._id,
         email: user.email
     };
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '48h' });
 
     res.json({ token });
 });
@@ -39,6 +39,14 @@ router.post('/register', async (req, res) => {
         // Create a new user if no conflicts
         user = new User({ username, email, password });
         await user.save();
+
+        // Generate JWT token after successful registration
+        const payload = {
+            id: user._id,
+            email: user.email
+        };
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '48h' });
+
         res.status(201).json({ message: 'User created successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Error registering new user', error: error.message });
