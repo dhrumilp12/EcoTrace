@@ -10,6 +10,8 @@ require('./config/passport'); // Make sure passport config is required
 const authRoutes = require('./routes/OAuth');
 const reportRoutes = require('./routes/report');
 const environmentalRoutes = require('./routes/environmental');
+const forumRoutes = require('./routes/forum');
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
@@ -25,6 +27,8 @@ app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/report' , reportRoutes);
 app.use('/api/environmental', environmentalRoutes);
+app.use('/api/forum', forumRoutes);
+
 // Basic route
 app.get('/', (req, res) => {
   res.send('Hello World!');
