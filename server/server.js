@@ -22,9 +22,9 @@ const app = express();
 app.use(passport.initialize());
 app.use(cors());
 app.use(bodyParser.json());
-app.use(authRoutes);
-app.use(reportRoutes);
-app.use(environmentalRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/report' , reportRoutes);
+app.use('/api/environmental', environmentalRoutes);
 // Basic route
 app.get('/', (req, res) => {
   res.send('Hello World!');
