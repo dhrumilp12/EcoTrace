@@ -127,7 +127,12 @@ router.get('/auth/google/callback',
             if (!user) {
                 return res.status(400).send('Password reset token is invalid or has expired.');
             }
-    
+            
+            // Check if the new password is strong enough
+        if (!isStrongPassword(req.body.password)) {
+            return res.status(400).json({ message: 'Password does not meet strength requirements' });
+        }
+        
             user.password = req.body.password;
             user.passwordResetToken = undefined;
             user.passwordResetExpires = undefined;
