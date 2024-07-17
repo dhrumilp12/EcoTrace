@@ -3,6 +3,9 @@ const passport = require('passport');
 const router = require('express').Router();
 const User = require('../models/user');
 const isStrongPassword = require('../utils/passwordUtils');
+const { sendPasswordResetEmail } = require('../utils/emailUtils');
+const crypto = require('crypto');
+require('dotenv').config();
 
 // Route to handle login
 router.post('/login', async (req, res) => {
@@ -92,5 +95,49 @@ router.get('/auth/google/callback',
     router.get('/secure-route', passport.authenticate('jwt', { session: false }), (req, res) => {
         res.json({ message: 'Secure data' });
     });
+
+    router.post('/forgot-password', async (req, res) => {
+        const { email } = req.body;
+        try {
+            const user = await User.findOne({ email });
+            if (!user) {
+                return res.status(404).send('No account with that email address exists.');
+            }
+    
+            const token = crypto.randomBytes(20).toString('hex');
+            user.passwordResetToken = token;
+            user.passwordResetExpires = Date.now() + 3600000; // 1 hour
+            await user.save();
+    
+            const resetUrl = `${process.env.RESET_PASSWORD_BASE_URL}${token}`;
+            await sendPasswordResetEmail(user.email, resetUrl);
+    
+            res.status(200).send('An e-mail has been sent with further instructions.');
+        } catch (error) {
+            res.status(500).send('Error sending the password reset email.');
+        }
+    });
+    
+    router.post('/reset/:token', async (req, res) => {
+        try {
+            const user = await User.findOne({
+                passwordResetToken: req.params.token,
+                passwordResetExpires: { $gt: Date.now() }
+            });
+            if (!user) {
+                return res.status(400).send('Password reset token is invalid or has expired.');
+            }
+    
+            user.password = req.body.password;
+            user.passwordResetToken = undefined;
+            user.passwordResetExpires = undefined;
+            await user.save();
+    
+            res.status(200).send('Your password has been updated.');
+        } catch (error) {
+            res.status(500).send('Error resetting password.');
+        }
+    });
+    
     
 module.exports = router;
