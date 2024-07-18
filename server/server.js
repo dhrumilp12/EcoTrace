@@ -15,6 +15,7 @@ const reportRoutes = require('./routes/report');
 const environmentalRoutes = require('./routes/environmental');
 const forumRoutes = require('./routes/forum');
 const eventRoutes = require('./routes/event');
+const educationalRoutes = require('./routes/educational');
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -34,6 +35,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
         app.use('/api/environmental', environmentalRoutes);
         app.use('/api/forum', forumRoutes);
         app.use('/api/event', eventRoutes);
+        app.use('/api/educational', educationalRoutes);
 
         // Basic route
         app.get('/', (req, res) => {
