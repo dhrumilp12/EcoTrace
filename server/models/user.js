@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const { badgeSchema } = require('./badge');
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -34,6 +35,20 @@ const userSchema = new mongoose.Schema({
     },
     lastLogin: {
         type: Date
+    },
+    badges: [{
+        badge: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Badge'
+        },
+        earnedOn: {
+            type: Date,
+            default: Date.now
+        }
+    }],
+    points: {
+        type: Number,
+        default: 0
     }
 });
 

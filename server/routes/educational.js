@@ -18,8 +18,8 @@ router.post('/', authenticate, upload.fields([{ name: 'images', maxCount: 5 }, {
         let images = req.files['images'] || [];
         let videos = req.files['videos'] || [];
 
-        images = images.map(file => ({ url: file.location, altText: '' })); // Placeholder for alt text
-        videos = videos.map(file => ({ url: file.location, subtitleUrl: '' })); // Placeholder for subtitles
+        images = images.map(file => ({ url: file.location, altText: 'Placeholder alt text' }));
+        videos = videos.map(file => ({ url: file.location, subtitleUrl: 'Placeholder subtitle URL' }));
 
         const newContent = new EducationalContent({
             title,
@@ -57,20 +57,28 @@ router.get('/', async (req, res) => {
 });
 
 // PUT route to update educational content by ID
-router.put('/:id', authenticate, async (req, res) => {
-    const { title, description, content, category, images, videos } = req.body;
+router.put('/:id', authenticate, upload.fields([{ name: 'images', maxCount: 5 }, { name: 'videos', maxCount: 3 }]), async (req, res) => {
+    console.log('Received body:', req.body);  // This should now log form fields correctly
+    const { title, description, content, category, tags } = req.body;
+    const images = req.files['images'] ? req.files['images'].map(file => ({ url: file.location, altText: 'Placeholder alt text' })) : [];
+    const videos = req.files['videos'] ? req.files['videos'].map(file => ({ url: file.location, subtitleUrl: 'Placeholder subtitle URL' })) : [];
+
     try {
         const updatedContent = await EducationalContent.findByIdAndUpdate(
-            req.params.id, 
-            { title, description, content, category, images, videos },
+            req.params.id,
+            { title, description, content, category, images, videos, tags: tags ? tags.split(',') : [] },
             { new: true, runValidators: true }
         );
+        if (!updatedContent) {
+            return res.status(404).json({ message: 'Content not found or update failed' });
+        }
         res.json(updatedContent);
     } catch (error) {
         console.error('Error updating educational content:', error);
         res.status(500).json({ message: 'Error updating educational content', error });
     }
 });
+
 
 // DELETE route to delete educational content by ID
 router.delete('/:id', authenticate, async (req, res) => {

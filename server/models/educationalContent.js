@@ -24,14 +24,8 @@ const educationalContentSchema = new mongoose.Schema({
         required: true,
         enum: ['Conservation', 'Recycling', 'Pollution', 'Biodiversity', 'Other']
     },
-    images: [{
-        url: String,
-        altText: String
-    }],
-    videos: [{
-        url: String,
-        subtitleUrl: String
-    }],
+    images: [{ url: String, altText: { type: String, required: true } }],
+    videos: [{ url: String, subtitleUrl: { type: String, required: true } }],
     tags: [String],
     author: {
         type: mongoose.Schema.Types.ObjectId,
@@ -48,11 +42,12 @@ const educationalContentSchema = new mongoose.Schema({
     }
 });
 
-educationalContentSchema.pre('save', function(next) {
+educationalContentSchema.pre('validate', function(next) {
     if (this.isModified('title') && !this.slug) {
         this.slug = this.title.toLowerCase().split(' ').join('-');
     }
     next();
 });
+
 
 module.exports = mongoose.model('EducationalContent', educationalContentSchema);
