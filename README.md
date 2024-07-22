@@ -1,6 +1,3 @@
-Certainly! Here's a well-structured `README.md` for your repository, designed to effectively communicate the purpose and functionality of the EcoTrace project:
-
----
 
 # EcoTrace: Community-Driven Environmental Monitoring Platform
 
