@@ -17,3 +17,5 @@ EcoTrace is a robust platform designed to empower communities to monitor and rep
 - **Security:** Implemented using JWT authentication and HTTPS for secure data transmission.
 
 ## Installation
+## Created with ❤️ by Dhrumil, Vaishnavi, Ruzh and UVCHIKORITA
+`Dhrumil Patel - Full Stack Developer & Software Engineer`<br>
