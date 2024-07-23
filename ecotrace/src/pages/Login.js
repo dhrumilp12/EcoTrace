@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import InputField from '../components/InputField';
+import Header from '../components/Header';
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -44,28 +47,60 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="login"
-          placeholder="Username or Email"
-          value={loginData.login}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={loginData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Log In</button>
-      </form>
-      <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+    <div className='min-h-screen py-8 px-9 bg-[#071108]'>
+      <Header />
+      <div
+        className="rounded-[20px] shadow-[0px_3px_6px_0px_rgba(206,206,206,0.63)] col-span-6"
+        style={{
+          backgroundImage: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(190,201,161,0.72) 100%), linear-gradient(0deg, #E1E0EC 0%, #E1E0EC 100%)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <div className='px-9 py-9'>
+          <span className="col-span-3 text-2xl text-black">
+            Welcome back! 🏠
+          </span>
+          <form onSubmit={handleSubmit}>
+            <InputField
+              type="text"
+              name="login"
+              placeholder="Username or Email"
+              value={loginData.login}
+              onChange={handleChange}
+            />
+            <InputField
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={loginData.password}
+              onChange={handleChange}
+            />
+            <Link to="/forgot-password">
+              <span className="text-black work_sans">
+                Forgot your password?
+              </span>
+            </Link>
+            <div className='py-6'>
+              <button
+                type="submit"
+                className="flex font-bold justify-center items-center flex-row gap-2.5 py-2.5 px-[30px] bg-[#071108] rounded-[10px] col-span-5 text-[#E4E3EE] work_sans"
+              >
+                Log In
+              </button>
+            </div>
+          </form>
+          <div className='py-4'>
+            <span className="text-black work_sans">
+              Don't have an account?
+            </span>
+            <Link to="/signup" className="text-black work_sans font-bold leading-[1.22] tracking-[-0.32px]">
+              {" "}Sign Up
+            </Link>
+          </div>
+
+        </div>
+      </div>
     </div>
   );
 };

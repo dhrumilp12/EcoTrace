@@ -9,9 +9,11 @@ export default function Logo() {
                     <circle cx="50" cy="50" r="25" />
                 </clipPath>
             </defs>
-            <circle cx="50" cy="50" r="25" fill="#071108" stroke="#071108" />
+            <circle cx="50" cy="50" r="25" fill="#000" stroke="#000" />
             <image href={Img} x="25" y="25" width="50" height="50" clipPath="url(#clip-circle)" />
-            <path d="M15.49296 29.6546L50 10.3094L84.507 29.6546V68.3452L50 87.6904L15.49296 68.3452V29.6546Z" stroke="#071108" strokeWidth="4" />
+            <path 
+            d="M15.49296 29.6546L50 10.3094L84.507 29.6546V68.3452L50 87.6904L15.49296 68.3452V29.6546Z" 
+            stroke="#fff" strokeWidth="4" />
         </svg>
     );
 };
