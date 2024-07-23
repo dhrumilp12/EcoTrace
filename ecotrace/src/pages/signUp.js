@@ -136,11 +136,11 @@ const Signup = () => {
             </div>
           </form>
           <div className='py-4'>
-            <span className="text-[#071108] font-['Work_Sans']">
+            <span className="text-[#071108] work_sans">
               Already have an account?
             </span>
-            <Link to="/login" className="text-[#071108] font-['Work_Sans'] font-bold leading-[1.22] tracking-[-0.32px]">
-              Log In
+            <Link to="/login" className="text-[#071108] work_sans font-bold leading-[1.22] tracking-[-0.32px]">
+              {"   "}Log In
             </Link>
           </div>
         </div>
