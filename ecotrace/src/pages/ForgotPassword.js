@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Logo_ } from '../assets';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -28,19 +29,30 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="forgot-password-container">
-      <h1>Forgot Password</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email"
-          required
-        />
-        <button type="submit">Send Password Reset Email</button>
-      </form>
-      {message && <p>{message}</p>}
+    <div className="bg-[#071108] min-h-screen flex flex-col items-center justify-center py-8 px-6">
+      <div className="absolute top-4 right-4">
+        <img src={Logo_} className="h-[90px] rounded-lg" alt="logo" />
+      </div>
+      <div className="w-full max-w-md p-6 text-center bg-white rounded-lg shadow-lg">
+        <h1 className="text-[#071108] text-3xl font-bold mb-6">Forgot Password</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            required
+            className="w-full px-4 py-2 mb-4 border border-[#7B7B7B] rounded-lg text-black bg-transparent outline-none"
+          />
+          <button
+            type="submit"
+            className="w-full py-2 px-[20px] bg-[#A6DE14] col-span-2 rounded-lg text-black font-semibold hover:bg-[#1D1D1D] hover:text-white"
+          >
+            Send Password Reset Email
+          </button>
+        </form>
+        {message && <p className="mt-4 text-red-600">{message}</p>}
+      </div>
     </div>
   );
 };
