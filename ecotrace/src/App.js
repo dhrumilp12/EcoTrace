@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Footer, Navbar } from './components';
+import {  Footer, Navbar } from './components';
 import { AboutUs, Contact, Home, Landing, Profile, Report, Settings, Track, Signup, Login, ForgotPassword, ResetPassword } from './pages';
 
 function App() {

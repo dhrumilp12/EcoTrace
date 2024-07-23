@@ -4,8 +4,8 @@ import Navbar from "./Navbar";
 import PrimaryBTN from "./PrimaryBTN";
 import SecondaryBTN from "./SecondaryBTN";
 import Ellipse from './Ellipse';
-
-
+import Back from "./Back";
+import Logo from "./Logo";
 
 export {
     Footer,
@@ -14,4 +14,6 @@ export {
     PrimaryBTN,
     SecondaryBTN,
     Ellipse,
+    Back,
+    Logo
 }
