@@ -21,7 +21,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      <Navbar/>
+      {/* <Navbar/> */}
         <Routes>
           {routes.map((route, index) => {
             return <Route
@@ -32,7 +32,7 @@ function App() {
             />
           })}
         </Routes>
-        <Footer/>
+        {/* <Footer/> */}
       </BrowserRouter>
     </div>
   );
