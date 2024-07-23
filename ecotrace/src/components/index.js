@@ -6,6 +6,9 @@ import SecondaryBTN from "./SecondaryBTN";
 import Ellipse from './Ellipse';
 import Back from "./Back";
 import Logo from "./Logo";
+import InputField from "./InputField";
+import Header from "./Header";
+
 
 export {
     Footer,
