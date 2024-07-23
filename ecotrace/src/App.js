@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Footer, Navbar } from './components';
-import { AboutUs, Contact, Home, Landing, Profile, Report, Settings, Track } from './pages';
+import { AboutUs, Contact, Home, Landing, Profile, Report, Settings, Track, Signup, Login, ForgotPassword, ResetPassword } from './pages';
 
 function App() {
   const routes = [
@@ -13,6 +13,10 @@ function App() {
     { path: '/about', element: <AboutUs /> },
     { path: '/contact', element: <Contact /> },
     { path: '/settings', element: <Settings /> },
+    { path: '/signup', element: <Signup /> },
+    { path: '/login', element: <Login /> },
+    { path: '/forgot-password', element: <ForgotPassword /> },
+    { path: '/reset_password/:token', element: <ResetPassword /> }
   ]
   return (
     <div>

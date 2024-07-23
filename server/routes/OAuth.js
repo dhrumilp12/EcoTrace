@@ -21,6 +21,7 @@ router.post('/login', async (req, res) => {
 
     // Check if user exists and password is valid
     if (!user || !(await user.isValidPassword(password))) {
+        console.log('Invalid credentials');
         return res.status(401).send('Invalid credentials');
     }
 
@@ -35,7 +36,7 @@ router.post('/login', async (req, res) => {
     res.json({ token });
 });
 
-module.exports = router;
+
 
 // Route to handle user registration
 router.post('/register', async (req, res) => {
@@ -43,11 +44,13 @@ router.post('/register', async (req, res) => {
 
     // Check if passwords match
     if (password !== confirmPassword) {
+        console.log('Passwords do not match');
         return res.status(400).json({ message: 'Passwords do not match' });
     }
 
     // Check password strength
     if (!isStrongPassword(password)) {
+        console.log('Password does not meet strength requirements');
         return res.status(400).json({ message: 'Password does not meet strength requirements' });
     }
 
@@ -56,10 +59,14 @@ router.post('/register', async (req, res) => {
         let user = await User.findOne({ $or: [{ email }, { username }] });
         if (user) {
             if (user.email === email) {
+                console.log('Email already in use');
                 return res.status(409).json({ message: 'Email already in use' });
+                
             }
             if (user.username === username) {
+                console.log('Username already in use');
                 return res.status(409).json({ message: 'Username already in use' });
+                
             }
         }
 
@@ -73,9 +80,10 @@ router.post('/register', async (req, res) => {
             email: user.email
         };
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '48h' });
-
+        console.log('User created successfully');
         res.status(201).json({ message: 'User created successfully', token });
     } catch (error) {
+        console.error('Error registering new user:', error);
         res.status(500).json({ message: 'Error registering new user', error: error.message });
     }
 });
