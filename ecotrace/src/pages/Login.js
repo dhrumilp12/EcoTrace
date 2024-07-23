@@ -77,7 +77,7 @@ const Login = () => {
               onChange={handleChange}
             />
             <Link to="/forgot-password">
-              <span className="text-black work_sans">
+              <span className="text-black underline work_sans">
                 Forgot your password?
               </span>
             </Link>
