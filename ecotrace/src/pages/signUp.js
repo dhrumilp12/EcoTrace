@@ -42,7 +42,10 @@ const Signup = () => {
       const data = await response.json();
       if (response.ok) {
         alert('Registration successful');
-        // Redirect or additional actions
+        // Store the token or further navigation
+        localStorage.setItem('token', data.token);
+        // Redirect to home or dashboard as needed
+        window.location.href = '/dashboard';  // Adjust as needed
       } else {
         throw new Error(data.message || "An error occurred");
       }
