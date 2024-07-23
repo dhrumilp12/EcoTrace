@@ -1,12 +1,12 @@
 import React from 'react';
 import { Logo, Logo_ } from '../assets';
-import { Ellipse, PrimaryBTN, SecondaryBTN } from '../components';
+import { Ellipse, Logo as ComponentLogo, PrimaryBTN, SecondaryBTN } from '../components';
 
 const Landing = () => {
   return (
     <div className="bg-[#071108] min-h-screen flex flex-col justify-center items-center relative">
       <div className="absolute top-4 right-4">
-        <img src={Logo_} className="h-[90px] rounded-lg" alt="logo" />
+        <ComponentLogo />
       </div>
       <div className="relative text-center">
         <div className="relative inline-block">

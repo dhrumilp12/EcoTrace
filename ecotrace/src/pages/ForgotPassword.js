@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Logo_ } from '../assets';
+import { Logo } from '../components';
+import { Link } from 'react-router-dom';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -31,7 +32,11 @@ const ForgotPassword = () => {
   return (
     <div className="bg-[#071108] min-h-screen flex flex-col items-center justify-center py-8 px-6">
       <div className="absolute top-4 right-4">
-        <img src={Logo_} className="h-[90px] rounded-lg" alt="logo" />
+        <Link
+          to="/"
+        >
+          <Logo />
+        </Link>
       </div>
       <div className="w-full max-w-md p-6 text-center bg-white rounded-lg shadow-lg">
         <h1 className="text-[#071108] text-3xl font-bold mb-6">Forgot Password</h1>
