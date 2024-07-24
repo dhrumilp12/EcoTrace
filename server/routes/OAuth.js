@@ -145,9 +145,10 @@ router.get('/auth/google/callback',
             user.passwordResetToken = undefined;
             user.passwordResetExpires = undefined;
             await user.save();
-    
+            console.log('Password updated successfully');
             res.status(200).send('Your password has been updated.');
         } catch (error) {
+            console.error('Error resetting password:', error);
             res.status(500).send('Error resetting password.');
         }
     });
