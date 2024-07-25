@@ -93,12 +93,34 @@ router.post('/register', async (req, res) => {
 router.get('/auth/google',
     passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-router.get('/auth/google/callback', 
-    passport.authenticate('google', { failureRedirect: '/login' }),
-    (req, res) => {
-        // Successful authentication, redirect home.
-        res.redirect('/');
-    });
+    router.get('/auth/google/callback', 
+        passport.authenticate('google', { failureRedirect: '/login' }),
+        async (req, res) => {
+            let usernameDerived = req.user.email.split('@')[0];
+            let uniqueUsername = await generateUniqueUsername(usernameDerived);
+    
+            req.user.username = uniqueUsername;
+    
+            const payload = {
+                id: req.user._id,
+                email: req.user.email,
+                username: req.user.username
+            };
+    
+            const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '48h' });
+            res.redirect(`/`); // Consider using HTTP-only cookies instead
+        });
+    
+    async function generateUniqueUsername(baseUsername) {
+        let username = baseUsername;
+        let count = 0;
+        while (await User.exists({ username: username })) {
+            count++;
+            username = `${baseUsername}${count}`;
+        }
+        return username;
+    }
+    
 
     router.get('/secure-route', passport.authenticate('jwt', { session: false }), (req, res) => {
         res.json({ message: 'Secure data' });

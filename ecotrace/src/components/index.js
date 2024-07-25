@@ -8,6 +8,7 @@ import Back from "./Back";
 import Logo from "./Logo";
 import InputField from "./InputField";
 import Header from "./Header";
+import GoogleLoginBTN from "./GoogleLoginBTN";
 
 
 export {
@@ -18,5 +19,6 @@ export {
     SecondaryBTN,
     Ellipse,
     Back,
-    Logo
+    Logo,
+    GoogleLoginBTN,
 }

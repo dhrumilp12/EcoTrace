@@ -1,6 +1,6 @@
 import React from 'react';
 import { Logo, Logo_ } from '../assets';
-import { Ellipse, Logo as ComponentLogo, PrimaryBTN, SecondaryBTN } from '../components';
+import { Ellipse, Logo as ComponentLogo, PrimaryBTN, SecondaryBTN, GoogleLoginBTN } from '../components';
 
 const Landing = () => {
   return (
@@ -39,7 +39,9 @@ const Landing = () => {
       <div>
         <SecondaryBTN name="Create Account" to="/signup" />
       </div>
-      <div className="py-3"></div>
+      <div className="py-3">
+        <GoogleLoginBTN />
+      </div>
     </div>
   );
 };
