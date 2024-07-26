@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Logo, Logo_ } from '../assets';
 import { Ellipse, Logo as ComponentLogo, PrimaryBTN, SecondaryBTN, GoogleLoginBTN } from '../components';
+import { useLocation } from 'react-router-dom';
 
 const Landing = () => {
+  const location = useLocation();
+
+    useEffect(() => {
+        // Function to parse query parameters
+        const parseQuery = (query) => {
+            return query.slice(1).split('&')
+                .map(param => param.split('='))
+                .reduce((values, [key, value]) => {
+                    values[key] = value;
+                    return values;
+                }, {});
+        };
+
+        const queryParameters = parseQuery(location.search);
+        if (queryParameters.token) {
+            localStorage.setItem('token', queryParameters.token);
+            // Redirect user or do other tasks after login
+        }
+    }, [location]);
   return (
     <div className="bg-[#071108] min-h-screen flex flex-col justify-center items-center relative">
       <div className="absolute top-4 right-4">

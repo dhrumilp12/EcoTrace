@@ -108,7 +108,7 @@ router.get('/auth/google',
             };
     
             const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '48h' });
-            res.redirect(`/`); // Consider using HTTP-only cookies instead
+            res.redirect(`http://localhost:3000?token=${token}`); // Consider using HTTP-only cookies instead
         });
     
     async function generateUniqueUsername(baseUsername) {
