@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hero } from '../components';
+import { Hero , GetReports} from '../components';
 
 const Home = () => {
   return (
@@ -16,6 +16,7 @@ const Home = () => {
 
         <section className="grid grid-cols-1 gap-8 mb-12 text-center md:grid-cols-3">
           <div className="p-6 bg-green-100 rounded-lg shadow-lg">
+            
             <h3 className="mb-4 text-2xl font-bold">Report Issues</h3>
             <p className="mb-4 text-gray-700">Help us by reporting environmental issues in your area.</p>
             <a href="/report" className="font-semibold text-green-600 hover:underline">Learn More</a>
@@ -30,11 +31,14 @@ const Home = () => {
             <p className="mb-4 text-gray-700">Join community efforts to address and solve environmental problems.</p>
             <a href="/about" className="font-semibold text-green-600 hover:underline">Learn More</a>
           </div>
+          
         </section>
 
         <section className="mb-12">
           <h2 className="mb-6 text-3xl font-semibold text-center">Recent Reports</h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <GetReports/>
+          {/* Commented out section
             <div className="p-6 bg-white rounded-lg shadow-lg">
               <h3 className="mb-2 text-xl font-bold">Pollution in River</h3>
               <p className="mb-4 text-gray-700">Reported by Jane Doe on July 18, 2024</p>
@@ -50,6 +54,7 @@ const Home = () => {
               <p className="mb-4 text-gray-700">Reported by Mary Johnson on July 16, 2024</p>
               <a href="/track" className="font-semibold text-green-600 hover:underline">View Details</a>
             </div>
+            */}
           </div>
         </section>
 

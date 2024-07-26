@@ -8,7 +8,8 @@ const upload = require('../utils/multerUtil');
 const authenticate = passport.authenticate('jwt', { session: false });
 
 // POST route to submit a new report with image and video uploads
-router.post('/reports', authenticate, upload.fields([{ name: 'images', maxCount: 3 }, { name: 'videos', maxCount: 3 }]), async (req, res) => {
+router.post('/', authenticate, upload.fields([{ name: 'images', maxCount: 3 }, { name: 'videos', maxCount: 3 }]), async (req, res) => {
+    console.log(req.files);  // Check if files are received
     const { description, longitude, latitude } = req.body;
     const images = req.files['images'] ? req.files['images'].map(file => file.location) : [];
     const videos = req.files['videos'] ? req.files['videos'].map(file => file.location) : [];
@@ -30,7 +31,7 @@ router.post('/reports', authenticate, upload.fields([{ name: 'images', maxCount:
 
 
 // GET route to fetch reports
-router.get('/reports', authenticate, async (req, res) => {
+router.get('/', authenticate, async (req, res) => {
     try {
         const reports = await Report.find();
         res.status(200).json(reports);

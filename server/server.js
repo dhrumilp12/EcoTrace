@@ -32,7 +32,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
         // Routes
         app.use('/api/auth', authRoutes);
-        app.use('/api/report', reportRoutes);
+        app.use('/api/reports', reportRoutes);
         app.use('/api/environmental', environmentalRoutes);
         app.use('/api/forum', forumRoutes);
         app.use('/api/event', eventRoutes);
