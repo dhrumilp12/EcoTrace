@@ -33,7 +33,7 @@ router.post('/', authenticate, upload.fields([{ name: 'images', maxCount: 3 }, {
 // GET route to fetch reports
 router.get('/', authenticate, async (req, res) => {
     try {
-        const reports = await Report.find();
+        const reports = await Report.find().populate('userId', 'username');  
         res.status(200).json(reports);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching reports', error: error.message });

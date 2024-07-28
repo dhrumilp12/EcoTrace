@@ -24,7 +24,7 @@ const GetReports = () => {
                   ...report,
                   address: 'Loading address...' // Initial placeholder for address
                 })));
-                
+                console.log(response.data);
                 response.data.forEach(report => {
                     reverseGeocode(report.location.coordinates);
                 });
@@ -59,16 +59,18 @@ const GetReports = () => {
     if (error) return <p>Error loading reports: {error}</p>;
 
     return (
-        <div>
+        <div className="container px-4 py-8 mx-auto">
             <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
-                <div>
+                <div className="p-6 bg-white rounded-lg shadow-md">
                   {reports.length > 0 ? (
                       reports.map((report) => (
-                          <div key={report._id} style={{ marginBottom: '20px', borderBottom: '1px solid #ccc' }}>
-                              <h3>{report.description}</h3>
-                              <p><strong>Created At:</strong> {new Date(report.createdAt).toLocaleDateString()}</p>
-                              <p><strong>Location:</strong> {report.address}</p>
-                              <div style={containerStyle}>
+                          <div key={report._id} className="p-4 bg-gray-100 rounded-md shadow">
+                              <h3 className="mb-2 text-xl font-semibold">{report.description}</h3>
+                              <p className="mb-2 text-gray-500"><strong>Created At:</strong> {new Date(report.createdAt).toLocaleDateString()}</p>
+                              <p className="mb-2 text-gray-500"><strong>Location:</strong> {report.address}</p>
+                              <p className="mb-2 text-gray-500"><strong>Reported by:</strong> {report.userId.username || 'N/A'}</p>
+                              <p className="mb-2 text-gray-500"><strong>User ID:</strong> {report.userId._id}</p>
+                              <div style={containerStyle} className="mb-4">
                                 <GoogleMap
                                     mapContainerStyle={{ width: '100%', height: '100%' }}
                                     center={{ lat: report.location.coordinates[1], lng: report.location.coordinates[0] }}
@@ -81,6 +83,7 @@ const GetReports = () => {
                                     />
                                 </GoogleMap>
                               </div>
+                              <div className="space-y-4">
                               {report.images && report.images.map((image, index) => (
                                   <img key={index} src={image} alt={`Report ${report._id}`} style={{ width: '100%', maxWidth: '600px', height: 'auto' }} />
                               ))}
@@ -90,7 +93,8 @@ const GetReports = () => {
                                       Your browser does not support the video tag.
                                   </video>
                               ))}
-                              <p><strong>User ID:</strong> {report.userId}</p>
+                                </div>
+                              
                           </div>
                       ))
                   ) : (
