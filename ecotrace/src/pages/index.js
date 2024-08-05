@@ -2,7 +2,7 @@ import Home from "./Home";
 import Landing from "./Landing";
 import Profile from "./Profile";
 import Report from "./Report";
-
+import CreateEventForm from "./CreateEventForm";
 import AboutUs from "./AboutUs";
 import Contact from "./Contact";
 import Settings from "./Settings";
@@ -11,7 +11,7 @@ import Login from "./Login";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import MapComponent from "./MapComponent";
-
+import EventList from "./EventList";
 
 
 
@@ -20,7 +20,7 @@ export {
     Landing,
     Profile,
     Report,
-    
+    CreateEventForm,
     AboutUs,
     Contact,
     Settings,
@@ -29,4 +29,6 @@ export {
     ForgotPassword,
     ResetPassword,
     MapComponent,
+    EventList
+
 }

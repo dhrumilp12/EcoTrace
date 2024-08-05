@@ -50,6 +50,7 @@ router.post('/', authenticate, upload.array('images', 3), async (req, res) => {
         await newEvent.save();
         notifyParticipants(newEvent._id, 'A new community project event has been created!');
         res.status(201).json(newEvent);
+        console.log('Event created:', newEvent); // Log the created event
     } catch (error) {
         console.error('Server error:', error); // Log the full error
         res.status(400).json({ message: 'Error creating event', error: error.message || error.toString() });
