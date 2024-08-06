@@ -1,9 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 export default function Back() {
+    const navigate = useNavigate();  // Get the navigate function from the hook
+
+    // Function to handle the back action
+    const goBack = () => {
+        navigate(-1);  // Move back one step in the history stack
+    };
     return (
-        <div>
-            <Link to="/">
+        <div onClick={goBack} style={{ cursor: 'pointer' }}>
                 <svg
                     width="36"
                     height="33"
@@ -13,7 +19,7 @@ export default function Back() {
                     <rect width="36" height="33" rx="10" fill="#E1E0EC" />
                     <path d="M22 8.5L14 16.5L22 24.5" stroke="#071108" stroke-width="2" />
                 </svg>
-            </Link>
+            
         </div>
     );
 }

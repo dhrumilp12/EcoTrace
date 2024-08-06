@@ -5,13 +5,114 @@ import Header from '../components/Header';
 
 const containerStyle = {
   width: '100%',
-  height: '400px'
+  height: '400px',
+  borderRadius: '8px' // Match the rounding of other inputs
 };
 
 const center = {
   lat: -3.745, // Default center can be your choice
   lng: -38.523
 };
+
+const styles = {
+  container: {
+    padding: '30px',
+    margin: 'auto',
+    minWidth: '600px',
+    background: 'linear-gradient(319deg, rgba(168,203,77,0) 0%, rgba(168,203,77,0.15) 100%), linear-gradient(0deg, #060D07 0%, #060D07 100%)',
+    borderRadius: '12px',
+    boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
+    fontFamily: 'Arial, sans-serif',
+},
+  title: {
+      textAlign: 'center',
+      color: '#F7F7F7',
+      fontSize: '30px',
+      fontWeight: 'medium',
+      marginBottom: '20px',
+      padding: '10px',
+      background: '#071108',
+      borderRadius: '12px', // Consistent rounding with container
+      maxWidth: '600px', // Ensure the title is at least 200px wide
+      margin: '20px auto', // Center the title
+  },
+  form: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '20px',
+  },
+  inputGroup: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: '20px', // Space between input groups
+},
+  label: {
+      fontSize: '18px',
+      color: '#F7F7F7',
+      font: 'sans-serif',
+      fontWeight: '500',
+      marginBottom: '8px', // Space between label and input
+      textAlign: 'center', // Center the label text
+      width: '100%', // Make label take full width of its container
+  },
+  input: {
+    padding: '12px',
+    borderRadius: '8px',
+    border: '2px solid #ccc',
+    fontSize: '16px',
+    width: '100%', // Full-width inputs
+},
+textarea: {
+    padding: '12px',
+    borderRadius: '8px',
+    border: '2px solid #ccc',
+    height: '150px',
+    fontSize: '16px',
+    width: '100%',
+},
+fileInput: {
+  display: 'none', // Hide the actual input element
+},
+fileLabel: {
+  padding: '12px',
+  border: '2px solid #ccc',
+  borderRadius: '8px',
+  display: 'block',
+  cursor: 'pointer',
+  color: '#F7F7F7',
+  backgroundColor: '#071108',
+  textAlign: 'center',
+  width: '100%',
+},
+fileName: {
+  marginTop: '5px',
+  color: '#F7F7F7', // Ensure file name is visible
+},
+  button: {
+      padding: '12px 25px',
+      marginTop: '10px',
+      background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(190,201,161,0.72) 100%),linear-gradient(0deg, #E1E0EC 0%, #E1E0EC 100%)',
+      color: '#071108',
+      border: 'none',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      fontSize: '18px',
+      fontWeight: 'bold',
+      minWidth: '600px', // Ensure the button is at least 200px wide
+      margin: 'auto', // Center the button
+  },
+  message: {
+      marginTop: '20px',
+      padding: '15px',
+      borderRadius: '8px',
+      background: '#4CAF50',
+      color: 'white',
+      textAlign: 'center',
+      fontSize: '16px',
+  }
+};
+
+
 
 const Report = () => {
   const [reportData, setReportData] = useState({
@@ -116,11 +217,14 @@ const Report = () => {
       
     <div className="container px-4 py-8 mx-auto pb-20">
     <Header />
-      <div className="p-6 bg-white rounded-lg shadow-md">
-        <h2 className="mb-4 text-2xl font-bold">Report an Environmental Issue</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="flex flex-col">
-            <label className="font-semibold text-gray-700">Description</label>
+    <div >
+            
+            <h2 style={styles.title}>Report an Environmental Issue</h2>
+
+        <form onSubmit={handleSubmit} style={styles.form}>
+        <div style={styles.container}>
+        <div style={styles.inputGroup}>
+            <label style={styles.label}>Description</label>
             <textarea
               name="description"
               value={reportData.description}
@@ -130,8 +234,8 @@ const Report = () => {
               required
             />
           </div>
-          <div className="flex flex-col">
-            <label className="font-semibold text-gray-700">Address</label>
+          <div style={styles.inputGroup}>
+            <label style={styles.label}>Address</label>
             <input
               type="text"
               name="address"
@@ -153,38 +257,39 @@ const Report = () => {
               </GoogleMap>
             </LoadScript>
           </div>
-          <div className="flex flex-col">
-            <label className="font-semibold text-gray-700">Images</label>
+          <div style={styles.inputGroup}>
+            <label style={styles.label}>Images</label>
             <input
               type="file"
               name="images"
               multiple
               onChange={handleChange}
-              className="p-2 border border-gray-300"
+              className="p-2 border border-gray-300 bg-gray-100 rounded-md"
               accept="image/*"
             />
           </div>
-          <div className="flex flex-col">
-            <label className="font-semibold text-gray-700">Videos</label>
+          <div style={styles.inputGroup}>
+            <label style={styles.label}>Videos</label>
             <input
               type="file"
               name="videos"
               multiple
               onChange={handleChange}
-              className="p-2 border border-gray-300"
+              className="p-2 border border-gray-300 bg-gray-100 rounded-md"
               accept="video/*"
             />
+          </div>
           </div>
           <div className="flex justify-end">
             <button
               type="submit"
-              className="px-4 py-2 text-white transition bg-green-600 rounded-md hover:bg-green-700"
+              style={styles.button}
             >
               Submit Report
             </button>
           </div>
         </form>
-        {message && <p className="mt-4 text-red-600">{message}</p>}
+        {message && <p  style={styles.message}>{message}</p>}
       </div>
     </div>
     

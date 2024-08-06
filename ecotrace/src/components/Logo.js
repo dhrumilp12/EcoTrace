@@ -1,9 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Img from '../assets/Logo.jpg';
 
 export default function Logo() {
+    const navigate = useNavigate();  // Hook to programmatically navigate
+
+    // Function to handle click on the logo
+    const handleClick = () => {
+        navigate('/home');  // Navigate to the Home page
+    };
     return (
-        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={handleClick}  // Attach the click handler
+        style={{ cursor: 'pointer' }}  // Change cursor to pointer to indicate clickable area
+        >
             <defs>
                 <clipPath id="clip-circle">
                     <circle cx="50" cy="50" r="25" />
