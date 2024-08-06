@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import Header from '../components/Header';
 
 const containerStyle = {
   width: '100%',
@@ -111,7 +112,10 @@ const Report = () => {
 
 
   return (
-    <div className="container px-4 py-8 mx-auto">
+  
+      
+    <div className="container px-4 py-8 mx-auto pb-20">
+    <Header />
       <div className="p-6 bg-white rounded-lg shadow-md">
         <h2 className="mb-4 text-2xl font-bold">Report an Environmental Issue</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -183,6 +187,7 @@ const Report = () => {
         {message && <p className="mt-4 text-red-600">{message}</p>}
       </div>
     </div>
+    
   );
 };
 

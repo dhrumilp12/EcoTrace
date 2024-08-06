@@ -48,7 +48,7 @@ const Signup = () => {
         // Store the token or further navigation
         localStorage.setItem('token', data.token);
         // Redirect to home or dashboard as needed
-        window.location.href = '/dashboard';  // Adjust as needed
+        window.location.href = '/home';  // Adjust as needed
       } else {
         throw new Error(data.message || "An error occurred");
       }

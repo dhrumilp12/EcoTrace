@@ -5,6 +5,8 @@ const User = require('../models/user');
 const isStrongPassword = require('../utils/passwordUtils');
 const { sendPasswordResetEmail } = require('../utils/emailUtils');
 const crypto = require('crypto');
+// At the top with other requires
+const tokenBlacklist = new Set();
 require('dotenv').config();
 
 // Route to handle login
@@ -121,6 +123,26 @@ router.get('/auth/google',
         return username;
     }
     
+
+    // Logout route
+router.post('/logout', (req, res) => {
+    const token = req.headers.authorization.split(' ')[1]; // Assuming the token is sent in the Authorization header
+    if (token) {
+        tokenBlacklist.add(token);
+        res.status(200).send('Logged out successfully');
+    } else {
+        res.status(400).send('No token provided');
+    }
+});
+
+// Middleware to check if the token is blacklisted
+const checkBlacklist = (req, res, next) => {
+    const token = req.headers.authorization.split(' ')[1];
+    if (tokenBlacklist.has(token)) {
+        return res.status(401).json({ message: 'Token has been invalidated' });
+    }
+    next();
+};
 
     router.get('/secure-route', passport.authenticate('jwt', { session: false }), (req, res) => {
         res.json({ message: 'Secure data' });

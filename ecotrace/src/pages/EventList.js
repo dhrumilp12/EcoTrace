@@ -101,7 +101,7 @@ const EventList = () => {
     
     
     return (
-        <div className="bg-white p-4 shadow rounded-lg">
+        <div className="bg-white p-4 shadow rounded-lg pb-20">
       <Header />
       {notification.show && (
                 <div

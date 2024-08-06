@@ -132,14 +132,14 @@ const CreateEventForm = () => {
     };
 
     return (
-        <div >
+        <div className='pr-10 pl-10'>
             <Header />
             <div style={styles.title}>
                 
                 <span>Create New Event</span>
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className=" pb-20">
                 <div style={styles.container}>
                 <div style={styles.formField}>
                 

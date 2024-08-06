@@ -3,7 +3,7 @@ import { Hero , GetReports} from '../components';
 
 const Home = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-white  pb-20">
      <Hero/>
 
       <main className="container px-4 py-12 mx-auto">
@@ -35,8 +35,8 @@ const Home = () => {
         </section>
 
         <section className="mb-12">
-          <h2 className="mb-6 text-3xl font-semibold text-center">Recent Reports</h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <h2 className="mb-6 text-3xl font-semibold text-center mb-0">Recent Reports</h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-1">
           <GetReports/>
           {/* Commented out section
             <div className="p-6 bg-white rounded-lg shadow-lg">

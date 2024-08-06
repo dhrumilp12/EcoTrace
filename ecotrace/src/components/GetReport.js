@@ -64,7 +64,7 @@ const GetReports = () => {
                 <div className="p-6 bg-white rounded-lg shadow-md">
                   {reports.length > 0 ? (
                       reports.map((report) => (
-                          <div key={report._id} className="p-4 bg-gray-100 rounded-md shadow">
+                          <div key={report._id} className="p-4 bg-gray-100 rounded-md shadow m-4">
                               <h3 className="mb-2 text-xl font-semibold">{report.description}</h3>
                               <p className="mb-2 text-gray-500"><strong>Created At:</strong> {new Date(report.createdAt).toLocaleDateString()}</p>
                               <p className="mb-2 text-gray-500"><strong>Location:</strong> {report.address}</p>
@@ -72,7 +72,7 @@ const GetReports = () => {
                               <p className="mb-2 text-gray-500"><strong>User ID:</strong> {report.userId._id}</p>
                               <div style={containerStyle} className="mb-4">
                                 <GoogleMap
-                                    mapContainerStyle={{ width: '100%', height: '100%' }}
+                                    mapContainerStyle={{ width: '100%', height: '100%', margin: '0 auto' }}
                                     center={{ lat: report.location.coordinates[1], lng: report.location.coordinates[0] }}
                                     zoom={15}
                                     onLoad={() => console.log('Map loaded:', report.location.coordinates)}

@@ -11,7 +11,8 @@ const styles = {
         minHeight: '100vh',
         fontFamily: 'Arial, sans-serif',
         backgroundColor: 'linear-gradient(319deg, rgba(168,203,77,0) 0%, rgba(168,203,77,0.15) 100%),linear-gradient(0deg, #060D07 0%, #060D07 100%)',
-        padding: '20px'
+        padding: '20px',
+        paddingBottom: '60px',
     },
     button: {
         padding: '10px 20px',
@@ -43,7 +44,7 @@ const Forum = () => {
     };
 
     return (
-        <div>
+        <div className='pr-10 pl-10'>
         <Header />
         <div style={styles.container}>
             
