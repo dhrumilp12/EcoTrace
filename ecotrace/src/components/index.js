@@ -10,6 +10,12 @@ import InputField from "./InputField";
 import Header from "./Header";
 import GoogleLoginBTN from "./GoogleLoginBTN";
 import GetReports from "./GetReport";
+import CreateCategoryForm from "./CreateCategoryForm";
+import CategoryList from "./CategoryList";
+import CreateThreadForm from "./CreateThreadForm";
+import ThreadList from "./ThreadList";
+import PostList from "./PostList";
+import CreatePostForm from "./CreatePostForm";
 
 
 export {
@@ -23,4 +29,11 @@ export {
     Logo,
     GoogleLoginBTN,
     GetReports,
+    CreateCategoryForm,
+    CategoryList,
+    CreateThreadForm,
+    ThreadList,
+    PostList,
+    CreatePostForm,
+    
 }

@@ -12,6 +12,7 @@ import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 import MapComponent from "./MapComponent";
 import EventList from "./EventList";
+import Forum from "./post";
 
 
 
@@ -29,6 +30,7 @@ export {
     ForgotPassword,
     ResetPassword,
     MapComponent,
-    EventList
+    EventList,
+    Forum,
 
 }

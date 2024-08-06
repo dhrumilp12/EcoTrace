@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import {  Footer, Navbar } from './components';
-import { AboutUs, Contact, Home, Landing, Profile, Report, Settings,  Signup, Login, ForgotPassword, ResetPassword, MapComponent, CreateEventForm, EventList } from './pages';
+import { AboutUs, Contact, Home, Landing, Profile, Report, Settings,  Signup, Login, ForgotPassword, ResetPassword, MapComponent, CreateEventForm, EventList, Forum } from './pages';
 import ProtectedRoute from './proctectedRoute';
 
 function App() {
@@ -19,7 +19,8 @@ function App() {
     { path: '/signup', element: <Signup /> },
     { path: '/login', element: <Login /> },
     { path: '/forgot-password', element: <ForgotPassword /> },
-    { path: '/reset_password/:token', element: <ResetPassword /> }
+    { path: '/reset_password/:token', element: <ResetPassword /> },
+    {path: '/forum', element: <Forum />, protected: true}
   ]
   return (
     <div>
