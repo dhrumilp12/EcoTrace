@@ -38,6 +38,8 @@ const styles = {
       margin: '20px auto', // Center the title
   },
   form: {
+      margin: '20px auto',
+      maxWidth: '600px',
       display: 'flex',
       flexDirection: 'column',
       gap: '20px',
