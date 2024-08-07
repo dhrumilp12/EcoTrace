@@ -2,7 +2,7 @@ import React from 'react';
 
 const GoogleLoginBTN = () => {
     // Use environment variable to form the correct backend URL
-    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+    const backendUrl = process.env.REACT_APP_API_URL;
 
     return (
         <div className="flex items-center justify-center">
