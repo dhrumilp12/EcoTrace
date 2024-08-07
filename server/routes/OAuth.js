@@ -5,7 +5,7 @@ const User = require('../models/user');
 const isStrongPassword = require('../utils/passwordUtils');
 const { sendPasswordResetEmail } = require('../utils/emailUtils');
 const crypto = require('crypto');
-// At the top with other requires
+const generateUniqueUsername = require('../utils/UniqueUsername');
 const tokenBlacklist = new Set();
 require('dotenv').config();
 
@@ -110,18 +110,11 @@ router.get('/auth/google',
             };
     
             const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '48h' });
-            res.redirect(`http://localhost:3000?token=${token}`); // Consider using HTTP-only cookies instead
+            res.redirect(process.env.Redirect_URL); // Consider using HTTP-only cookies instead
+            console.log('user redirected', process.env.Redirect_URL);
         });
     
-    async function generateUniqueUsername(baseUsername) {
-        let username = baseUsername;
-        let count = 0;
-        while (await User.exists({ username: username })) {
-            count++;
-            username = `${baseUsername}${count}`;
-        }
-        return username;
-    }
+    
     
 
     // Logout route

@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const session = require('express-session');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -25,8 +26,18 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
         const app = express();
 
+        // Session configuration
+        app.use(session({
+            
+            secret: process.env.GOOGLE_CLIENT_SECRET, // Replace 'your_secret_key' with a real secret key
+            resave: false,
+            saveUninitialized: true,
+            cookie: { secure: !process.env.NODE_ENV !== 'production' } // Use secure cookies in production environment
+        }));
+
         // Middlewares
         app.use(passport.initialize());
+        app.use(passport.session());
         app.use(cors({
             origin: process.env.Frontend_URL // Your Vercel domain
           }));
