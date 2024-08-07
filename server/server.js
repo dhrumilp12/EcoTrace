@@ -28,8 +28,9 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
         // Middlewares
         app.use(passport.initialize());
         app.use(cors({
-            origin: 'https://eco-trace.vercel.app' // Your Vercel domain
+            origin: process.env.Frontend_URL // Your Vercel domain
           }));
+          console.log('CORS enabled', process.env.Frontend_URL);
         app.use(bodyParser.json());
 
         // Routes

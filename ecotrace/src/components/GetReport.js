@@ -5,7 +5,8 @@ import api from '../api';
 
 const containerStyle = {
   width: '100%',
-  height: '200px'
+  height: '200px',
+  borderRadius: '8px'
 };
 
 const GetReports = () => {
@@ -21,14 +22,15 @@ const GetReports = () => {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 
-                setReports(response.data.map(report => ({
-                  ...report,
-                  address: 'Loading address...' // Initial placeholder for address
-                })));
+                const updatedReports = response.data.map(report => ({
+                    ...report,
+                    showMap: false
+                  }));
                 console.log(response.data);
                 response.data.forEach(report => {
                     reverseGeocode(report.location.coordinates);
                 });
+                setReports(updatedReports);
                 setIsLoading(false);
             } catch (err) {
                 setError(err.message);
@@ -55,6 +57,13 @@ const GetReports = () => {
             console.error('Reverse geocoding error:', error);
         }
     };
+    const handleToggleMap = (reportId) => {
+        setReports(prevReports =>
+          prevReports.map(report =>
+            report._id === reportId ? { ...report, showMap: !report.showMap } : report
+          )
+        );
+      };
 
     if (isLoading) return <p>Loading reports...</p>;
     if (error) return <p>Error loading reports: {error}</p>;
@@ -71,6 +80,13 @@ const GetReports = () => {
                               <p className="mb-2 text-gray-500"><strong>Location:</strong> {report.address}</p>
                               <p className="mb-2 text-gray-500"><strong>Reported by:</strong> {report.userId.username || 'N/A'}</p>
                               <p className="mb-2 text-gray-500"><strong>User ID:</strong> {report.userId._id}</p>
+                              <button 
+                            onClick={() => handleToggleMap(report._id)}
+                            className="mb-4 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 transition"
+                            >
+                            {report.showMap ? 'Hide Map' : 'Show Map'}
+                            </button>
+                            {report.showMap && (
                               <div style={containerStyle} className="mb-4">
                                 <GoogleMap
                                     mapContainerStyle={{ width: '100%', height: '100%', margin: '0 auto' }}
@@ -83,7 +99,7 @@ const GetReports = () => {
                                         onLoad={() => console.log('Marker loaded:', report.location.coordinates)}
                                     />
                                 </GoogleMap>
-                              </div>
+                              </div>)}
                               <div className="space-y-4">
                               {report.images && report.images.map((image, index) => (
                                   <img key={index} src={image} alt={`Report ${report._id}`} style={{ width: '100%', maxWidth: '600px', height: 'auto' }} />
