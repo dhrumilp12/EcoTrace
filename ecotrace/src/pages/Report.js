@@ -19,11 +19,13 @@ const styles = {
   container: {
     padding: '30px',
     margin: 'auto',
-    minWidth: '600px',
+    width: '100%', // Full-width container
+    maxWidth: '600px',
     background: 'linear-gradient(319deg, rgba(168,203,77,0) 0%, rgba(168,203,77,0.15) 100%), linear-gradient(0deg, #060D07 0%, #060D07 100%)',
     borderRadius: '12px',
     boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
     fontFamily: 'Arial, sans-serif',
+   
 },
   title: {
       textAlign: 'center',
@@ -38,8 +40,6 @@ const styles = {
       margin: '20px auto', // Center the title
   },
   form: {
-      margin: '20px auto',
-      maxWidth: '600px',
       display: 'flex',
       flexDirection: 'column',
       gap: '20px',
@@ -101,7 +101,8 @@ fileName: {
       cursor: 'pointer',
       fontSize: '18px',
       fontWeight: 'bold',
-      minWidth: '600px', // Ensure the button is at least 200px wide
+      width: '100%', // Full-width button
+      maxWidth: '600px', // Ensure the button is at least 200px wide
       margin: 'auto', // Center the button
   },
   message: {

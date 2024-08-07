@@ -44,7 +44,7 @@ const Forum = () => {
     };
 
     return (
-        <div className='pr-10 pl-10'>
+        <div className="container px-4 py-8 mx-auto pb-20">
         <Header />
         <div style={styles.container}>
             

@@ -56,7 +56,7 @@ const Footer = () => {
 const styles = {
     footerContainer: {
         position: 'fixed',
-        bottom: 0, // Align to the bottom
+        bottom: 0,
         left: 0,
         right: 0,
         display: 'flex',
@@ -64,18 +64,21 @@ const styles = {
         padding: '10px 0',
         backgroundColor: '#071108',
         color: '#fff',
-        borderTop: '2px solid #4CAF50', // Style as needed
+        borderTop: '2px solid #4CAF50',
         borderRadius: '20px',
-        
+        flexWrap: 'wrap' // Ensure it wraps on smaller screens
     },
     tab: {
         padding: '10px 20px',
+        margin: '5px 5px',
         borderRadius: '20px',
         backgroundColor: '#E1E0EC',
-        border: '#071108',
+        border: 'none',
         cursor: 'pointer',
         color: '#071108',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        flex: '1 1 auto', // Allow flexible grow and shrink
+        textAlign: 'center' // Center text for smaller widths
     },
     activeTab: {
         backgroundColor: '#A6DE14',

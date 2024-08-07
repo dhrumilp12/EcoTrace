@@ -6,7 +6,8 @@ const styles = {
     container: {
         padding: '30px',
         margin: 'auto',
-        minWidth: '600px',
+        maxWidth: '600px',
+        width: '100%',
         background: 'linear-gradient(319deg, rgba(168,203,77,0) 0%, rgba(168,203,77,0.15) 100%),linear-gradient(0deg, #060D07 0%, #060D07 100%)',
         borderRadius: '12px',
         boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
@@ -20,9 +21,8 @@ const styles = {
         marginBottom: '20px',
         padding: '10px',
         background: '#071108',
-        borderRadius: '12px', // Consistent rounding with container
-        maxWidth: '600px', // Ensure the title is at least 200px wide
-        margin: '20px auto', // Center the title
+        borderRadius: '12px',
+        margin: '20px auto',
     },
     form: {
         display: 'flex',
@@ -68,7 +68,8 @@ const styles = {
         cursor: 'pointer',
         fontSize: '18px',
         fontWeight: 'bold',
-        minWidth: '600px', // Ensure the button is at least 200px wide
+        width: '100%', // Ensure the button takes full width of its container
+        maxWidth: '600px', // Ensure the button is at least 200px wide
         margin: 'auto', // Center the button
     },
     message: {
