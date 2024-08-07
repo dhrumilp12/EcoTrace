@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import api from '../api';
 
 const containerStyle = {
   width: '100%',
@@ -16,7 +17,7 @@ const GetReports = () => {
         const fetchReports = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get('/reports', {
+                const response = await api.get('/reports', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 

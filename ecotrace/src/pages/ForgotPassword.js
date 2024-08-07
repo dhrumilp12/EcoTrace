@@ -10,7 +10,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     setMessage(''); // Clear previous messages
     try {
-      const response = await fetch(`auth/forgot-password`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/forgot-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

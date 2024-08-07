@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import Header from '../components/Header';
+import api from '../api';
 
 const containerStyle = {
   width: '100%',
@@ -197,7 +198,7 @@ const Report = () => {
   }
 
     try {
-        const response = await axios.post('/reports', formData, {
+        const response = await api.post('/reports', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import api from '../api';
 
 const CreateThreadForm = ({ categoryId }) => {
     const [title, setTitle] = useState('');
@@ -9,7 +10,7 @@ const CreateThreadForm = ({ categoryId }) => {
         event.preventDefault();
         try {
             const token = localStorage.getItem('token'); // Assuming the token is stored in localStorage
-            const response = await axios.post(`/forum/${categoryId}/threads`, { title }, {
+            const response = await api.post(`/forum/${categoryId}/threads`, { title }, {
                 headers: {
                     Authorization: `Bearer ${token}` // Ensure the Authorization header is set
                 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import api from '../api';
 
 const styles = {
     container: {
@@ -91,7 +92,7 @@ const CreateCategoryForm = () => {
         event.preventDefault();
         try {
             const token = localStorage.getItem('token');
-            await axios.post('/forum/categories', { title, description }, {
+            await api.post('/forum/categories', { title, description }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

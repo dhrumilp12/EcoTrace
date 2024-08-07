@@ -23,7 +23,7 @@ const ResetPassword = ({ match }) => {// Using match to get the token from URL p
     }
 
     try {
-      const response = await fetch(`/auth/reset/${token}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/reset/${token}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

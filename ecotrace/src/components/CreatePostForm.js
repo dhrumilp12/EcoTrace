@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import api from '../api';
 
 const CreatePostForm = ({ threadId }) => {
     const [content, setContent] = useState('');
@@ -11,7 +12,7 @@ const CreatePostForm = ({ threadId }) => {
         setIsSubmitting(true);
         try {
             const token = localStorage.getItem('token'); // Ensure you're getting the auth token correctly
-            const response = await axios.post(`/forum/threads/${threadId}/posts`, { content }, {
+            const response = await api.post(`/forum/threads/${threadId}/posts`, { content }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../components/Header';
+import api from '../api';
 
 
 const EventList = () => {
@@ -28,7 +29,7 @@ const EventList = () => {
             end: end || undefined,
         };
         try {
-            const response = await axios.get('/event', { params });
+            const response = await api.get('/event', { params });
             console.log('Fetched events:', response.data);
             const eventsWithAddress = await Promise.all(response.data.map(async event => ({
                 ...event,
@@ -46,7 +47,7 @@ const EventList = () => {
 
     const fetchAddress = async (coordinates) => {
         try {
-            const { data } = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates[1]},${coordinates[0]}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
+            const { data } = await api.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates[1]},${coordinates[0]}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
             return data.results[0]?.formatted_address || 'Address not found';
         } catch (error) {
             console.error('Error fetching address:', error);
@@ -85,7 +86,7 @@ const EventList = () => {
                 }
             };
     
-            const response = await axios.post(`/event/${eventId}/rsvp`, {}, config);
+            const response = await api.post(`/event/${eventId}/rsvp`, {}, config);
             setNotification({
                 show: true,
                 message: `Successfully registered for ${response.data.event.title}!`

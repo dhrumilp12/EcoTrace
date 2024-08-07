@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Ensure CSS is imported for toast
+import api from '../api';
 
 const Footer = () => {
     const location = useLocation();
@@ -13,7 +14,7 @@ const Footer = () => {
     const handleLogout = async () => {
         if (window.confirm("Are you sure you want to log out?")) {
             try {
-                const response = await axios.post('/auth/logout', {}, {
+                const response = await api.post('/auth/logout', {}, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 toast.success('Logged out successfully', {

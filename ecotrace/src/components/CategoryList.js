@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CreateThreadForm from './CreateThreadForm';
 import ThreadList from './ThreadList';
+import api from '../api';
 
 const styles = {
     container: {
@@ -72,7 +73,7 @@ const CategoryList = () => {
 
     const fetchCategories = async () => {
         try {
-            const response = await axios.get('/forum/categories');
+            const response = await api.get('/forum/categories');
             const initialTabs = response.data.reduce((acc, category) => {
                 acc[category._id] = 'view'; // Default tab
                 return acc;

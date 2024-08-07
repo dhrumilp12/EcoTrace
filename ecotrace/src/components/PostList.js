@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import api from '../api';
 
 const PostList = ({ threadId }) => {
     const [posts, setPosts] = useState([]);
@@ -8,7 +9,7 @@ const PostList = ({ threadId }) => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await axios.get(`/forum/threads/${threadId}/posts`);
+                const response = await api.get(`/forum/threads/${threadId}/posts`);
                 setPosts(response.data);
             } catch (error) {
                 setError('Error fetching posts: ' + (error.response?.data.message || error.message));

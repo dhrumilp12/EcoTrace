@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CreatePostForm from './CreatePostForm';
 import PostList from './PostList';
+import api from '../api';
 
 const ThreadList = ({ categoryId }) => {
     const [threads, setThreads] = useState([]);
@@ -14,7 +15,7 @@ const ThreadList = ({ categoryId }) => {
         const fetchThreads = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get(`/forum/${categoryId}/threads`);
+                const response = await api.get(`/forum/${categoryId}/threads`);
                 setThreads(response.data);
                 setIsLoading(false);
             } catch (error) {

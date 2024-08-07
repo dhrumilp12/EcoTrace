@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import api from '../api';
 
 const containerStyle = {
   width: '100%',
@@ -18,7 +19,7 @@ const MapComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get('/environmental/data', {
+        const { data } = await api.get('/environmental/data', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         setEnvironmentalData(data);

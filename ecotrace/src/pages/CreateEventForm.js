@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Header from '../components/Header';
+import api from '../api';
+
 const styles = {
     container: {
         background: 'linear-gradient(319deg, rgba(168,203,77,0) 0%, rgba(168,203,77,0.15) 100%),linear-gradient(0deg, #060D07 0%, #060D07 100%)',
@@ -94,7 +96,7 @@ const CreateEventForm = () => {
         event.preventDefault();
         try {
             // First, geocode the address to get latitude and longitude
-            const geocodeResponse = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
+            const geocodeResponse = await api.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
             if (geocodeResponse.data.status !== 'OK' || !geocodeResponse.data.results[0]) {
                 throw new Error('Failed to geocode address');
             }
@@ -111,7 +113,7 @@ const CreateEventForm = () => {
                 formData.append('images', image);
             });
 
-            const response = await axios.post('/event', formData, {
+            const response = await api.post('/event', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
