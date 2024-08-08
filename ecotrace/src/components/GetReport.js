@@ -82,7 +82,7 @@ const GetReports = () => {
                               <p className="mb-2 text-gray-500"><strong>User ID:</strong> {report.userId._id}</p>
                               <button 
                             onClick={() => handleToggleMap(report._id)}
-                            className="mb-4 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 transition"
+                            className="mb-4 p-2 bg-green-600 text-white rounded-md hover:bg-gray-200 hover:bg-green-700"
                             >
                             {report.showMap ? 'Hide Map' : 'Show Map'}
                             </button>
