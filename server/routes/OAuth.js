@@ -110,23 +110,23 @@ router.get('/auth/google',
             };
     
             const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '48h' });
-            res.redirect(process.env.Redirect_URL); // Consider using HTTP-only cookies instead
-            console.log('user redirected', process.env.Redirect_URL);
+            res.redirect(`${process.env.Redirect_URL}?token=${token}`); // Consider using HTTP-only cookies instead
+            console.log('user redirected', `${process.env.Redirect_URL}?token=${token}`);
         });
     
     
     
 
     // Logout route
-router.post('/logout', (req, res) => {
-    const token = req.headers.authorization.split(' ')[1]; // Assuming the token is sent in the Authorization header
-    if (token) {
-        tokenBlacklist.add(token);
-        res.status(200).send('Logged out successfully');
-    } else {
-        res.status(400).send('No token provided');
-    }
-});
+    router.post('/logout', (req, res) => {
+        const token = req.headers.authorization.split(' ')[1]; // Assuming the token is sent in the Authorization header
+        if (token) {
+            tokenBlacklist.add(token);
+            res.status(200).send('Logged out successfully');
+        } else {
+            res.status(400).send('No token provided');
+        }
+    });
 
 // Middleware to check if the token is blacklisted
 const checkBlacklist = (req, res, next) => {

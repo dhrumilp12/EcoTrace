@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import { Footer, Navbar } from './components';
-import { AboutUs, Contact, Home, Landing, Profile, Report, Settings, Signup, Login, ForgotPassword, ResetPassword, MapComponent, CreateEventForm, EventList, Forum } from './pages';
+import { AboutUs, Contact, Home, Landing, Profile, Report, Settings, Signup, Login, ForgotPassword, ResetPassword, MapComponent, CreateEventForm, EventList, Forum, HandleLoginRedirect } from './pages';
 import ProtectedRoute from './proctectedRoute';
 
 function App() {
@@ -21,7 +21,8 @@ function App() {
     { path: '/login', element: <Login /> },
     { path: '/forgot-password', element: <ForgotPassword /> },
     { path: '/reset_password/:token', element: <ResetPassword /> },
-    { path: '/forum', element: <Forum />, protected: true }
+    { path: '/forum', element: <Forum />, protected: true },
+    { path: '/handle-login-redirect', element: <HandleLoginRedirect />}
   ];
 
   const Layout = () => {
