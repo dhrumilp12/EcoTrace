@@ -4,6 +4,7 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Ensure CSS is imported for toast
 import api from '../api';
+import Notification from './notification';
 
 const Footer = () => {
     const location = useLocation();
@@ -39,8 +40,10 @@ const Footer = () => {
     };
 
     return (
-        <div>
+        <div className='mt-10'>
+            
             <div style={styles.footerContainer}>
+            <Notification />
                 <Link to="/home" style={isActive('/home') ? { ...styles.tab, ...styles.activeTab } : styles.tab}>Home</Link>
                 <Link to="/forum" style={isActive('/forum') ? { ...styles.tab, ...styles.activeTab } : styles.tab}>Post</Link>
                 <Link to="/create-event" style={isActive('/create-event') ? { ...styles.tab, ...styles.activeTab } : styles.tab}>Create Event</Link>

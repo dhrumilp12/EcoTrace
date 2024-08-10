@@ -18,6 +18,7 @@ const forumRoutes = require('./routes/forum');
 const eventRoutes = require('./routes/event');
 const educationalRoutes = require('./routes/educational');
 const badgeRoutes = require('./routes/badge');
+const notificationRoutes = require('./routes/notification');
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -52,6 +53,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
         app.use('/api/event', eventRoutes);
         app.use('/api/educational', educationalRoutes);
         app.use('/api/badge', badgeRoutes);
+        app.use('/api/notification', notificationRoutes);
 
         // Basic route
         app.get('/', (req, res) => {
@@ -67,9 +69,13 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
             } catch (error) {
                 console.error('Error deleting past events:', error);
             }
+            try{
             require('./utils/notificationFunctions').sendEventReminders();
             require('./utils/eventUtilities').updateEventStatuses();
             console.log('Daily event reminder notifications sent.');
+            } catch (error) {
+                console.error('Daily tasks failed:', error);
+            }
         });
 
         // Define PORT from .env, or default to 3000 if not specified

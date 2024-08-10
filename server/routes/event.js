@@ -65,11 +65,13 @@ router.post('/:eventId/rsvp', authenticate, async (req, res) => {
             req.params.eventId,
             { $addToSet: { participants: req.user._id } },
             { new: true }
-        );
+        ).populate('participants', 'username'); 
         if (!event) {
             return res.status(404).json({ message: 'Event not found' });
         }
-        await notifyParticipants(req.params.eventId, "New participant RSVPed!");
+        const participantName = req.user.username; // Assume user model has a username field
+
+        await notifyParticipants(req.params.eventId, "New participant RSVPed!", 'rsvp', participantName);
         res.json({ message: 'RSVP successful', event });
     } catch (error) {
         res.status(500).json({ message: 'Error RSVPing to event', error });

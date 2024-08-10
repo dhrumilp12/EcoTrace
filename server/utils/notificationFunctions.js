@@ -1,7 +1,7 @@
 const Notification = require('../models/notification');
 const Event = require('../models/event');
 
-exports.notifyParticipants = async function(eventId, message, eventType = 'update') {
+exports.notifyParticipants = async function(eventId, message, eventType = 'update', participantName='') {
     try {
         const event = await Event.findById(eventId).populate('participants');
         if (!event) {
@@ -11,7 +11,7 @@ exports.notifyParticipants = async function(eventId, message, eventType = 'updat
 
         const notifications = event.participants.map(participant => ({
             recipient: participant._id,
-            message: `${message} - ${eventType}`,
+            message: `${message} - ${eventType}${participantName ? ' by ' + participantName : ''}`,
             event: eventId
         }));
         await Notification.insertMany(notifications);
@@ -33,4 +33,14 @@ exports.sendEventReminders = async function() {
     eventsToRemind.forEach(event => {
         notifyParticipants(event._id, 'Reminder: Your event is coming up in 3 days!', 'reminder');
     });
+};
+
+exports.markNotificationAsRead = async function(notificationId) {
+    try {
+        const notification = await Notification.findByIdAndUpdate(notificationId, { read: true }, { new: true });
+        return notification;
+    } catch (error) {
+        console.error(`Failed to mark notification ${notificationId} as read:`, error);
+        throw error; // Rethrow and let the caller handle it
+    }
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
-import { Footer, Navbar } from './components';
+import { Footer, Navbar, Notification } from './components';
 import { AboutUs, Contact, Home, Landing, Profile, Report, Settings, Signup, Login, ForgotPassword, ResetPassword, MapComponent, CreateEventForm, EventList, Forum, HandleLoginRedirect } from './pages';
 import ProtectedRoute from './proctectedRoute';
 
@@ -34,11 +34,14 @@ function App() {
 
     return (
       <div>
+        
         <Routes>
           {routes.map((route, index) => (
             <Route key={index} path={route.path} element={route.protected ? <ProtectedRoute>{route.element}</ProtectedRoute> : route.element} />
           ))}
         </Routes>
+        {}
+        
         {showFooter && <Footer />}
       </div>
     );

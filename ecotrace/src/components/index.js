@@ -16,6 +16,7 @@ import CreateThreadForm from "./CreateThreadForm";
 import ThreadList from "./ThreadList";
 import PostList from "./PostList";
 import CreatePostForm from "./CreatePostForm";
+import Notification from "./notification";
 
 
 export {
@@ -35,5 +36,6 @@ export {
     ThreadList,
     PostList,
     CreatePostForm,
+    Notification,
     
 }
