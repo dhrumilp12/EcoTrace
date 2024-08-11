@@ -65,14 +65,15 @@ const styles = {
         bottom: 0,
         left: 0,
         right: 0,
-        display: 'flex',
-        justifyContent: 'space-around',
+        display: 'flex', // Keep using flex to maintain alignment
+        justifyContent: 'flex-start', // Align items to the start of the container
+        overflowX: 'auto', // Enable horizontal scrolling
+        whiteSpace: 'nowrap', // Prevent wrapping of items within the footer
         padding: '10px 0',
         backgroundColor: '#071108',
         color: '#fff',
         borderTop: '2px solid #4CAF50',
         borderRadius: '20px',
-        flexWrap: 'wrap' // Ensure it wraps on smaller screens
     },
     tab: {
         padding: '10px 20px',
@@ -83,9 +84,9 @@ const styles = {
         cursor: 'pointer',
         color: '#071108',
         fontWeight: 'bold',
-        flex: '1 1 auto', // Allow flexible grow and shrink
-        textAlign: 'center', // Center text for smaller widths
-        textDecoration: 'none'
+        display: 'inline-block', // Change from flex item to inline-block for horizontal layout
+        textAlign: 'center',
+        textDecoration: 'none',
     },
     activeTab: {
         backgroundColor: '#A6DE14',
