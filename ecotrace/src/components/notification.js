@@ -33,18 +33,17 @@ const Notification = () => {
         if (showModal && iconRef.current && modalRef.current) {
             const iconRect = iconRef.current.getBoundingClientRect();
             const modalHeight = modalRef.current.offsetHeight;
-            const additionalOffset = 200; // Additional pixels to move the modal to the right
-    
+            const additionalOffset = 200; // Adjust this to move the modal to the right
+
             setModalStyle({
                 position: 'fixed',
                 top: `${iconRect.top - modalHeight}px`,
-                left: `${iconRect.left + additionalOffset}px`, // Add additionalOffset to the left property
+                left: `${iconRect.left + additionalOffset}px`,
                 transform: 'translateX(-50%)',
                 zIndex: 1050
             });
         }
     }, [showModal, notifications.length]);
-    
 
     const toggleModal = () => {
         setShowModal(!showModal);
@@ -63,13 +62,13 @@ const Notification = () => {
             {showModal && (
                 <div style={styles.modalOverlay} onClick={toggleModal}>
                     <div ref={modalRef} style={{ ...styles.modal, ...modalStyle }} onClick={e => e.stopPropagation()}>
+                    <button style={styles.closeButton} onClick={toggleModal}>Close</button>
                         <div style={styles.modalContent}>
                             {notifications.length > 0 ? notifications.map(notification => (
                                 <div key={notification._id} style={styles.notificationItem}>
                                     {notification.message}
                                 </div>
                             )) : <p>No new notifications.</p>}
-                            <button style={styles.closeButton} onClick={toggleModal}>Close</button>
                         </div>
                     </div>
                 </div>
@@ -116,17 +115,24 @@ const styles = {
         backgroundColor: '#fff',
         borderRadius: '4px',
         padding: '20px',
-        minWidth: '300px'
+        minWidth: '300px',
+        position: 'relative', // Ensures that the close button is positioned relative to the modal
+        overflow: 'auto', // Makes the content scrollable
+        maxHeight: '80vh' // Limits the modal height to avoid overflow
     },
     modalContent: {
-        position: 'relative'
+        position: 'relative',
+        padding: '20px'
     },
     closeButton: {
         position: 'absolute',
         top: '10px',
         right: '10px',
         cursor: 'pointer',
-        color: '#333',
+        color: 'white',
+        backgroundColor: '#43A047',
+        borderRadius: '4px',
+        padding: '2px 10px',
     },
     notificationItem: {
         padding: '8px 12px',

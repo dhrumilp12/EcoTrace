@@ -8,13 +8,22 @@ const cache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
 // Middleware to authenticate using JWT
 const authenticate = passport.authenticate('jwt', { session: false });
 
+
 // POST route to create new environmental data
 router.post('/data', authenticate, async (req, res) => {
+    let { dateRecorded, pollutionLevel, temperature, latitude, longitude, type } = req.body;
+
+    if (!dateRecorded || !pollutionLevel || !temperature || !latitude || !longitude || !type) {
+        return res.status(400).json({ message: 'Missing required fields' });
+    }
+    
+    // Format the type to match the enum values
+    type = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
+    type = type.replace(/\b\w/g, l => l.toUpperCase()); // This makes sure each word starts with a capital letter
     
     try {
-        const { dateRecorded, pollutionLevel, temperature, latitude, longitude, type } = req.body;
         const newEntry = new EnvironmentalData({
-            userId: req.user._id, // Assume req.user is populated from the JWT
+            userId: req.user._id,
             dateRecorded,
             pollutionLevel,
             temperature,
@@ -24,9 +33,12 @@ router.post('/data', authenticate, async (req, res) => {
         await newEntry.save();
         res.status(201).json(newEntry);
     } catch (error) {
+        console.error('Failed to create new entry:', error);
         res.status(400).json({ message: 'Error creating data', error: error.message });
     }
 });
+
+
 
 // PUT route to update environmental data
 router.put('/data/:id', authenticate, async (req, res) => {

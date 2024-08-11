@@ -1,4 +1,4 @@
-import Home from "./Home";
+
 import Landing from "./Landing";
 import Profile from "./Profile";
 import Report from "./Report";
@@ -10,15 +10,16 @@ import Signup from "./signUp";
 import Login from "./Login";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
-import MapComponent from "./MapComponent";
+import EnvironmentalForm from "./EnvironmentalForm";
 import EventList from "./EventList";
 import Forum from "./post";
 import HandleLoginRedirect from "./HandleLoginRedirect";
+import NewHome from "./newhome";
+
 
 
 
 export {
-    Home,
     Landing,
     Profile,
     Report,
@@ -30,9 +31,11 @@ export {
     Login,
     ForgotPassword,
     ResetPassword,
-    MapComponent,
+    EnvironmentalForm,
     EventList,
     Forum,
-    HandleLoginRedirect
+    HandleLoginRedirect,
+    NewHome,
+    
 
 }

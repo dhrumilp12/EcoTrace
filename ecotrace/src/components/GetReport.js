@@ -69,12 +69,10 @@ const GetReports = () => {
     if (error) return <p>Error loading reports: {error}</p>;
 
     return (
-        <div className="container px-4 py-8 mx-auto">
-            <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
-                <div className="p-6 bg-white rounded-lg shadow-md">
+        <div className="container px-2 py-4 mx-auto">
                   {reports.length > 0 ? (
                       reports.map((report) => (
-                          <div key={report._id} className="p-4 bg-gray-100 rounded-md shadow m-4">
+                          <div key={report._id} className="p-4 bg-white rounded-md shadow m-4">
                               <h3 className="mb-2 text-xl font-semibold">{report.description}</h3>
                               <p className="mb-2 text-gray-500"><strong>Created At:</strong> {new Date(report.createdAt).toLocaleDateString()}</p>
                               <p className="mb-2 text-gray-500"><strong>Location:</strong> {report.address}</p>
@@ -117,8 +115,6 @@ const GetReports = () => {
                   ) : (
                       <p>No reports found.</p>
                   )}
-                </div>
-            </LoadScript>
         </div>
     );
 };

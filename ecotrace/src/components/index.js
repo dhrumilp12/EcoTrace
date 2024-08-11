@@ -17,6 +17,8 @@ import ThreadList from "./ThreadList";
 import PostList from "./PostList";
 import CreatePostForm from "./CreatePostForm";
 import Notification from "./notification";
+import MapComponent from "./map";
+import EnvironmentalStats from "./statistics";
 
 
 export {
@@ -37,5 +39,7 @@ export {
     PostList,
     CreatePostForm,
     Notification,
+    MapComponent,
+    EnvironmentalStats,
     
 }
