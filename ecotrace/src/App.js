@@ -28,18 +28,14 @@ function App() {
     
   ];
 
+  const noFooterRegex = /^\/(signup|login|forgot-password|reset_password\/[^\/]+|)$/;
+
   const Layout = () => {
     const location = useLocation();
-    const noFooterPaths = ['/signup', '/login', '/forgot-password', '/reset_password', '/'];
+    
 
-    // Function to check paths, considering dynamic segments
-    const showFooter = !noFooterPaths.some(path => {
-        if (path.includes(':')) { // Handle dynamic paths by segment
-            const basePath = path.split('/:')[0];
-            return location.pathname.startsWith(basePath);
-        }
-        return location.pathname === path;
-    });
+    // Use regex to test the current pathname
+    const showFooter = !noFooterRegex.test(location.pathname);
 
     return (
       <div>
