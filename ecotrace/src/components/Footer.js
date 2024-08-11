@@ -50,7 +50,6 @@ const Footer = () => {
                 <Link to="/create-event" style={isActive('/create-event') ? { ...styles.tab, ...styles.activeTab } : styles.tab}>Create Event</Link>
                 <Link to="/event-list" style={isActive('/event-list') ? { ...styles.tab, ...styles.activeTab } : styles.tab}>Events</Link>
                 <Link to="/report" style={isActive('/report') ? { ...styles.tab, ...styles.activeTab } : styles.tab}>Create Report</Link>
-                <Link to="/map" style={isActive('/map') ? { ...styles.tab, ...styles.activeTab } : styles.tab}>Map</Link>
                 <Link to="/environmental-form" style={isActive('/environmental-form') ? { ...styles.tab, ...styles.activeTab } : styles.tab}>Environmental Form</Link>
                 <Link to="/about" style={isActive('/about') ? { ...styles.tab, ...styles.activeTab } : styles.tab}>About us</Link>
                 <div onClick={handleLogout} style={isActive('/logout') ? { ...styles.tab, ...styles.activeTab } : styles.tab}>Logout</div>
