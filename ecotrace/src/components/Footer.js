@@ -84,11 +84,13 @@ const styles = {
         color: '#071108',
         fontWeight: 'bold',
         flex: '1 1 auto', // Allow flexible grow and shrink
-        textAlign: 'center' // Center text for smaller widths
+        textAlign: 'center', // Center text for smaller widths
+        textDecoration: 'none'
     },
     activeTab: {
         backgroundColor: '#A6DE14',
         color: '#071108',
+        textDecoration: 'none'
     }
 };
 

@@ -11,6 +11,7 @@ const SecondaryBTN = ({ name, to }) => {
                     background:
                         'linear-gradient(319deg, rgba(168,203,77,0) 0%, rgba(168,203,77,0.15) 100%),linear-gradient(0deg, #060D07 0%, #060D07 100%)',
                     boxShadow: 'inset 4px 4px 13.3px 0 rgba(255, 255, 255, 0.25)',
+                    textDecoration: 'none',
                 }}>
                 <span className="text-[#F6FCE9] work_sans">
                     {name}
