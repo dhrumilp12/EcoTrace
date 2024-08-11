@@ -30,7 +30,7 @@ function App() {
 
   const Layout = () => {
     const location = useLocation();
-    const noFooterPaths = ['/signup', '/login', '/forgot-password', '/reset_password/:token', '/'];
+    const noFooterPaths = /^(\/signup|\/login|\/forgot-password|\/reset_password\/[\w-]+|\/)$/;
     
     // Ensure the path exactly matches one of the noFooterPaths
     const showFooter = !noFooterPaths.includes(location.pathname);
