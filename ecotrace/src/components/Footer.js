@@ -61,6 +61,7 @@ const Footer = () => {
 
 const styles = {
     footerContainer: {
+        margin: '5px 0px',
         position: 'fixed',
         bottom: 0,
         left: 0,
@@ -87,6 +88,9 @@ const styles = {
         display: 'inline-block', // Change from flex item to inline-block for horizontal layout
         textAlign: 'center',
         textDecoration: 'none',
+        flex: '1 0 auto',  // Grow to fill available space, but don’t shrink below content size
+        minWidth: '100px',  // Minimum width for each tab
+        maxWidth: '180px'   // Maximum width to prevent tabs from becoming too large
     },
     activeTab: {
         backgroundColor: '#A6DE14',
