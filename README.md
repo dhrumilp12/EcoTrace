@@ -16,6 +16,41 @@ EcoTrace is a robust platform designed to empower communities to monitor and rep
 - **APIs:** Integration of external APIs for additional environmental data.
 - **Security:** Implemented using JWT authentication and HTTPS for secure data transmission.
 
-## Installation
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- MongoDB
+
+### Installation
+
+1. Clone the repo
+```
+https://github.com/dhrumilp12/Health-Sync.git
+```
+3. Setup the backend environment with PIP
+```
+cd .\server\
+npm install 
+```
+3. Setup the frontend environment with NPM
+```
+cd .\ecotrace
+npm install
+```
+4. Run the backend:
+```
+node server.js
+```
+5. run the frontend:
+```
+npm start
+```
+6. Build the frontend:
+```
+npm run build
+```
+
 ## Created with ❤️ by Dhrumil, Vaishnavi, Ruzh and UVCHIKORITA
 `Dhrumil Patel - Full Stack Developer & Software Engineer`<br>
