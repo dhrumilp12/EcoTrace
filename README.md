@@ -23,34 +23,48 @@ EcoTrace is a robust platform designed to empower communities to monitor and rep
 - Node.js
 - MongoDB
 
+
 ### Installation
 
-1. Clone the repo
-```
-https://github.com/dhrumilp12/Health-Sync.git
-```
-3. Setup the backend environment with PIP
-```
-cd .\server\
-npm install 
-```
-3. Setup the frontend environment with NPM
-```
-cd .\ecotrace
-npm install
-```
-4. Run the backend:
-```
-node server.js
-```
-5. run the frontend:
-```
-npm start
-```
-6. Build the frontend:
-```
-npm run build
-```
+1. **Clone the repository:**
+   ```
+   https://github.com/dhrumilp12/EcoTrace.git
+   ```
+
+2. **Setup the backend environment:**
+   ```
+   cd ./server/
+   npm install
+   ```
+
+3. **Setup the frontend environment:**
+   ```
+   cd ../ecotrace
+   npm install
+   ```
+
+4. **Configure environment variables:**
+   - Copy the `.env.example` file to a new file named `.env`.
+   - Update the `.env` file with your specific configurations.
+   ```
+   cp .env.example .env
+   ```
+
+5. **Run the backend:**
+   ```
+   node server.js
+   ```
+
+6. **Run the frontend:**
+   ```
+   npm start
+   ```
+
+7. **Build the frontend:**
+   ```
+   npm run build
+   ```
+
 
 ## Created with ❤️ by Dhrumil, Vaishnavi, Ruzh and UVCHIKORITA
 `Dhrumil Patel - Full Stack Developer & Software Engineer`<br>
