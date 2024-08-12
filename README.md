@@ -27,7 +27,7 @@ EcoTrace is a robust platform designed to empower communities to monitor and rep
 
 1. Clone the repo
 ```
-[https://github.com/dhrumilp12/Health-Sync.git](https://github.com/dhrumilp12/EcoTrace.git)
+https://github.com/dhrumilp12/Health-Sync.git
 ```
 3. Setup the backend environment with PIP
 ```
