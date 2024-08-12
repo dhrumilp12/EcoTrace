@@ -20,8 +20,9 @@ EcoTrace is a robust platform designed to empower communities to monitor and rep
 
 ### Prerequisites
 
-- Node.js
-- MongoDB
+- **Node.js:** Ensure you have Node.js installed on your machine. This project is built with Node.js, which serves as the runtime environment for the backend. You can download and install Node.js from [nodejs.org](https://nodejs.org/).
+- **MongoDB:** This application uses MongoDB for data storage. You must have MongoDB installed and running on your local machine or have access to a MongoDB database server. For installation instructions, visit [mongodb.com](https://www.mongodb.com/try/download/community).
+
 
 
 ### Installation
