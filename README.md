@@ -11,7 +11,7 @@ EcoTrace is a robust platform designed to empower communities to monitor and rep
 - **Data Analytics:** Advanced analytics on the collected data help in understanding trends and patterns in environmental quality over time.
 
 ## Technologies Used
-- **Frontend:** React, Redux for state management, and Leaflet for mapping functionalities.
+- **Frontend:** React, Redux for state management, and Google-maps for mapping functionalities.
 - **Backend:** Node.js with Express for RESTful API services, MongoDB for database management.
 - **APIs:** Integration of external APIs for additional environmental data.
 - **Security:** Implemented using JWT authentication and HTTPS for secure data transmission.
